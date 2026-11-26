@@ -11,7 +11,7 @@ Challenge definitions. Comparator checks that each declaration here has exactly
 the type of its Challenge counterpart and uses only the permitted axioms.
 
 `erdos_947` is `MirskyNewman.erdos_947` from `MirskyNewman.Bridge` (Step D).
-`lt_one` is still `sorry`; Step E supplies it from `MirskyNewman.Counting`.
+`lt_one` is `MirskyNewman.erdos_1190_lt_one` from `MirskyNewman.Counting` (Step E).
 -/
 
 @[expose] public section
@@ -30,7 +30,7 @@ namespace Erdos1190
 theorem erdos_1190.variants.lt_one (m : ℕ) (hm : 1 ≤ m) (S : Finset ℕ) (a : ℕ → ℤ)
     (hS : ∀ n ∈ S, m < n)
     (hdisj : ∀ n ∈ S, ∀ n' ∈ S, n ≠ n' → ¬ ∃ x : ℤ, x ≡ a n [ZMOD n] ∧ x ≡ a n' [ZMOD n']) :
-    (∑ n ∈ S, (n : ℝ)⁻¹) < 1 := by
-  sorry
+    (∑ n ∈ S, (n : ℝ)⁻¹) < 1 :=
+  MirskyNewman.erdos_1190_lt_one m hm S a hS hdisj
 
 end Erdos1190

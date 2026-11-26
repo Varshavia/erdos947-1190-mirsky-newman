@@ -2,12 +2,8 @@ module
 
 public import MirskyNewman.Bridge
 public import MirskyNewman.Core
+public import MirskyNewman.Counting
 public import MirskyNewman.Defs
--- Supplies `∑`, `ℝ`, and `[ZMOD n]` for the `lt_one` statement until
--- `MirskyNewman.Counting` (Step E) imports them itself.
-public import Mathlib.Algebra.BigOperators.Group.Finset.Defs
-public import Mathlib.Basic.Real.Basic
-public import Mathlib.Data.Int.ModEq
 
 /-!
 # Mirsky–Newman
