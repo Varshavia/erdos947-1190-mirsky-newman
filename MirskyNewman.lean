@@ -1,5 +1,6 @@
 module
 
+public import MirskyNewman.Core
 public import MirskyNewman.Defs
 -- Supplies `∑`, `ℝ`, and `[ZMOD n]` for the `lt_one` statement until
 -- `MirskyNewman.Counting` (Step E) imports them itself.
