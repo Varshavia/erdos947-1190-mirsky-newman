@@ -12,6 +12,13 @@ the type of its Challenge counterpart and uses only the permitted axioms.
 
 `erdos_947` is `MirskyNewman.erdos_947` from `MirskyNewman.Bridge` (Step D).
 `lt_one` is `MirskyNewman.erdos_1190_lt_one` from `MirskyNewman.Counting` (Step E).
+
+Comparator compares the elaborated statements syntactically, instance terms
+included. The proof development imports `Mathlib.Order.BourbakiWitt`, which
+Challenge does not, and its instance `ChainCompletePartialOrder.instOfCompleteLattice`
+would make `Disjoint` on `Set ℤ` pick a different (defeq) `PartialOrder` term than
+in Challenge. Removing that instance for the restatement of `erdos_947` makes the
+statement elaborate to exactly the Challenge term.
 -/
 
 @[expose] public section
@@ -20,6 +27,7 @@ open Function
 
 namespace Erdos947
 
+attribute [-instance] ChainCompletePartialOrder.instOfCompleteLattice in
 theorem erdos_947 : ¬ ∃ c : StrictCoveringSystem ℤ, Pairwise (Disjoint on c.coset) :=
   MirskyNewman.erdos_947
 
