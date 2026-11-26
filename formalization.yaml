@@ -1,127 +1,275 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
-# formalization.yaml v0.4. Replace every TEMPLATE value before submitting.
-# TODO(Step F): every remaining TEMPLATE value is deliberately left for Step F;
-# scripts/validate-formalization.rb (and the CI licence job) report each one.
-# Replace a placeholder list with [] only when its adjacent comment permits it;
-# lists described as required must remain nonempty.
 version: "v0.4"
 
 project:
-  name: "TEMPLATE: name of the formalization"
+  name: "Mirsky–Newman: no exact covering system with distinct moduli (Erdős problems 947 and 1190)"
   description: >-
-    TEMPLATE: concise public account of the mathematical content and principal
-    results of the formalization
-  # Required nonempty list of name strings or mappings with a nonempty name.
+    A Lean 4 and Mathlib proof of the Mirsky–Newman theorem in two forms, both
+    stated word for word as in google-deepmind/formal-conjectures (FC) at commit
+    ea8e3e198ded6fc73efb7f5653b74b28ac4ae1a8. The first form (Erdős problem
+    947) says that no finite family of residue classes with pairwise distinct
+    moduli n_i ≥ 2 partitions the integers, so there is no exact covering
+    system with distinct moduli. The second form (a variant of Erdős problem
+    1190) says that if residue classes a_n mod n, for n in a finite set S of
+    integers all greater than m ≥ 1, are pairwise disjoint, then the sum of
+    1/n over S is less than 1. Both are derived from one finite
+    roots-of-unity lemma: pairwise disjoint residue classes with distinct moduli
+    ≥ 2, all dividing N > 0, cannot cover {0, …, N−1}. The lemma is proved by
+    summing ζ^x over {0, …, N−1}, where ζ is a primitive root of unity of order
+    equal to the largest modulus. This entry gives an Apache-2.0-licensed,
+    Comparator-checked proof of both FC statements; at the pinned commit FC
+    links no formal proof of the second.
   authors:
     - "Yusuf Suat Babacan"  # GitHub: Varshavia
-  # Required root licence. Keep this in sync with the Apache-2.0 LICENSE file.
   license: "Apache-2.0"
-  # Required nonempty list of name strings or mappings with a nonempty name.
-  # For a thin wrapper, name people responsible for this submitted wrapper;
-  # submission authorization separately covers the underlying formalization.
   responsible_maintainers:
     - "Yusuf Suat Babacan"  # GitHub: Varshavia
 
-# Omit repository for an ordinary project: Palomar treats this submitted
-# repository as the substantive proof development. If this repository is only
-# a thin Comparator wrapper, uncomment and pin the actual formalization in this
-# exact shape:
-# repository:
-#   substantive_formalization:
-#     id: "TEMPLATE: owner/repository or https://github.com/owner/repository"
-#     revision: "TEMPLATE: full 40-character lowercase commit SHA"
-
 classification:
-  # Use 1–2 official arXiv identifiers such as math.LO and 1–8 five-character
-  # MSC 2020 identifiers such as 03B35.
-  arxiv: ["TEMPLATE: official arXiv identifier such as math.LO"]
-  msc2020: ["TEMPLATE: five-character MSC 2020 identifier such as 03B35"]
+  arxiv: ["math.NT", "math.CO"]
+  msc2020: ["11B25", "11A07"]
 
 sources:
-  # Sources must be nonempty. Every source needs a title and relationship; the
-  # relationship must be exactly formalizes, adapts, independently-proves,
-  # background, or other.
-  # Choose one result origin:
-  # - For a theorem first presented by this formalization, set one source to
-  #   type: original-proof and relationship: other. All additional source
-  #   relationships must be background or other.
-  # - Otherwise, omit type: original-proof and give at least one source a
-  #   formalizes, adapts, or independently-proves relationship. A new proof of
-  #   a known published result is source-based and uses independently-proves.
-  # Type, authors, contributors, id, location, note, license, and
-  # author_endorsement are optional; remove them when genuinely inapplicable.
-  # Authors are bibliographic authors. Contributors record other source roles,
-  # with one name and free-form role such as editor or problem-proposer.
-  # Type is a concise free-text
-  # description such as article, paper, book, formalization, web post, folklore,
-  # conversation, or other. The exact value original-proof is reserved for the
-  # result-origin declaration described above.
-  # Original-result example:
-  # - title: "TEMPLATE: describe the result first presented here"
-  #   type: original-proof
-  #   relationship: other
-  - title: "TEMPLATE: title of the mathematical source"
+  - title: "On integers of the form 2^k + p and some related problems"
     authors:
-      - "TEMPLATE: source author"
+      - "Paul Erdős"
     contributors:
-      - name: "TEMPLATE: source contributor"
-        role: "TEMPLATE: contributor role, for example editor or problem-proposer"
-    id: "TEMPLATE: stable identifier or versioned URL"
-    type: "TEMPLATE: concise source kind, for example article, book, or formalization"
-    location: "TEMPLATE: stable URL or bibliographic location, if available"
-    relationship: "TEMPLATE: formalizes, adapts, independently-proves, background, or other"
-    note: "TEMPLATE: explain relationship or author_endorsement: other; otherwise remove"
-    license: "TEMPLATE: source license or unknown"
-    author_endorsement: "TEMPLATE: participated, endorsed, no-response, not-contacted, declined, n/a, or other"
+      - name: "Leon Mirsky"
+        role: "co-author of the Mirsky–Newman proof first published in this article"
+      - name: "Donald J. Newman"
+        role: "co-author of the Mirsky–Newman proof first published in this article"
+    id: "[Er50] Erdős, P., Summa Brasil. Math. (1950), 113–123"
+    type: "article"
+    location: "the Mirsky–Newman proof that no exact covering system has distinct moduli (cited as [Er50] in FC 947.lean)"
+    relationship: "adapts"
+    note: >-
+      The proof formalized here follows the Mirsky–Newman idea: take a
+      primitive root of unity whose order is the largest modulus and show that
+      exactly one residue class contributes a nonzero amount. The usual account
+      of the argument uses the generating-function identity
+      Σ z^(a_i)/(1 − z^(n_i)) = 1/(1 − z) and lets z tend to the root of
+      unity. Here a finite version is proved instead, with sums of ζ^x over
+      {0, …, N−1} where every modulus divides N, so no limit or power series is
+      needed. The 1950 text itself was not consulted; the attribution follows
+      FC 947.lean and erdosproblems.com/947.
+    license: "unknown"
+    author_endorsement: "n/a"
+
+  - title: "Independent proof of the Mirsky–Newman theorem by Davenport and Rado"
+    contributors:
+      - name: "Harold Davenport"
+        role: "independent proof"
+      - name: "Richard Rado"
+        role: "independent proof"
+    type: "attribution (no separate publication cited)"
+    location: "credited in the docstring of Erdos947.erdos_947 in FC 947.lean and on erdosproblems.com/947"
+    relationship: "background"
+    note: >-
+      Cited for the attribution only. FC and erdosproblems.com credit Davenport
+      and Rado with an independent proof but cite no separate publication for
+      it. Their argument is not the one formalized here.
+    author_endorsement: "n/a"
+
+  - title: "A survey of problems in combinatorial number theory"
+    authors:
+      - "Paul Erdős"
+    contributors:
+      - name: "Leon Mirsky"
+        role: "credited by Erdős with the result that ε_m < 1"
+      - name: "Donald J. Newman"
+        role: "credited by Erdős with the result that ε_m < 1"
+    id: "[Er80] Erdős, Paul, Ann. Discrete Math. (1980), 89–115"
+    type: "article"
+    location: "the remark that ε_m < 1, credited to Mirsky and Newman (cited as [Er80] in FC 1190.lean)"
+    relationship: "background"
+    note: >-
+      According to FC 1190.lean, Erdős seems to credit Mirsky and Newman with
+      ε_m < 1 but gives no reference or proof. The FC statement lt_one, proved
+      here, says that every individual sum Σ_{n∈S} 1/n of a disjoint family is
+      less than 1. That gives ε_m ≤ 1 for the supremum ε_m, not ε_m < 1. Our
+      proof counts residue classes in {0, …, N−1} with N = ∏_{n∈S} n, and in
+      the equality case applies the same finite Mirsky–Newman lemma used for
+      erdos_947. The 1980 text itself was not consulted.
+    license: "unknown"
+    author_endorsement: "n/a"
+
+  - title: "Problems and results on combinatorial number theory. III"
+    authors:
+      - "Paul Erdős"
+    id: "[Er77c] Erdős, Paul, Number theory day (Proc. Conf., Rockefeller Univ., New York, 1976) (1977), 43–72"
+    type: "conference paper"
+    location: "cited as [Er77c] in FC 947.lean"
+    relationship: "background"
+    note: "Cited by FC as a further reference for Erdős problem 947; not consulted for this formalization."
+    license: "unknown"
+    author_endorsement: "n/a"
+
+  - title: "Erdős Problems #947 and #1190"
+    contributors:
+      - name: "Thomas Bloom"
+        role: "maintainer of erdosproblems.com"
+    id: "https://www.erdosproblems.com/947 and https://www.erdosproblems.com/1190"
+    type: "web page"
+    location: "https://www.erdosproblems.com/947, https://www.erdosproblems.com/1190"
+    relationship: "background"
+    note: "Problem pages that the FC formalizations cite; used for the problem statements and attributions."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+  - title: "formal-conjectures: Erdős problems 947 and 1190 and the CoveringSystem definitions"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/tree/ea8e3e198ded6fc73efb7f5653b74b28ac4ae1a8"
+    type: "formalization (statement source)"
+    location: >-
+      FormalConjectures/ErdosProblems/947.lean (Erdos947.erdos_947),
+      FormalConjectures/ErdosProblems/1190.lean
+      (Erdos1190.erdos_1190.variants.lt_one), and
+      FormalConjecturesForMathlib/NumberTheory/CoveringSystem.lean
+      (CoveringSystem, StrictCoveringSystem, CoveringSystem.coset), all at
+      commit ea8e3e198ded6fc73efb7f5653b74b28ac4ae1a8
+    relationship: "formalizes"
+    note: >-
+      Challenge.lean copies these Lean statements and definitions verbatim from
+      FC. The only changes are removing FC-only metadata: the @[category …]
+      attributes, the formal_proof_palomar linter option, and the unused lemma
+      CoveringSystem.iUnion_cosets. scripts/check_fc_fidelity.py and a CI job
+      check this mechanically against the pinned commit. FC supplies only the
+      statements; the proofs are new.
+    license: "Apache-2.0"
+    author_endorsement: "not-contacted"
 
 related_formalizations:
-  # Remove this field or use [] when none are known.
-  - id: "TEMPLATE: stable URL or identifier for earlier formalization"
-    relationship: "TEMPLATE: builds-on, adapts, independent, supersedes, or other"
-    note: "TEMPLATE: explain the relationship"
+  - id: "https://github.com/plby/lean-proofs/blob/8822f7ddef30fadbd92e1c6ab4ed897af356af5e/src/latest/ErdosProblems/Erdos947.lean#L277"
+    relationship: "independent"
+    note: >-
+      An earlier Lean proof of Erdos947.erdos_947. FC 947.lean links it in the
+      formal_proof attribute at the pinned commit. The plby/lean-proofs
+      repository declares no licence. No code from it is reused or adapted
+      here. This entry adds an Apache-2.0-licensed proof of the same FC
+      statement, checked by Palomar's Comparator. FC links plby's
+      Erdos1190.lean only for the main statement erdos_1190; it links no
+      formal proof for erdos_1190.variants.lt_one.
+  - id: "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-02-000004"
+    relationship: "independent"
+    note: >-
+      A Palomar entry by Murali Menon, first registered 2026-10-02 from
+      Jostamon/erdos274-hs-solvable. It proves the Herzog–Schönheim conjecture
+      for solvable groups (Erdős problem 274); its compared theorems are
+      Erdos274.Palomar.herzog_schonheim_solvable and
+      Erdos274.Palomar.erdos_274_solvable. Applied to the solvable group ℤ, its
+      index form implies the mathematical content of erdos_947: a partition of
+      ℤ into at least two residue classes repeats a modulus. It does not state
+      the FC declarations, and it does not cover the lt_one statement of Erdős
+      problem 1190. No code from it is reused here.
 
 status:
   scope: >-
-    TEMPLATE: state exactly what is and is not formalized, including any weaker
-    theorem, changed hypotheses, or omitted material.
-  # Count the proof development, excluding Challenge.lean's deliberate sorry.
-  # Replace each count with an unquoted nonnegative integer, for example 0.
-  sorry_count: "TEMPLATE: unquoted nonnegative integer"
-  sorry_in_definitions: "TEMPLATE: unquoted nonnegative integer"
-  axioms: ["TEMPLATE: declaration names, or replace this list with []"]
-  # status.main_results is optional. Add it only when a short curated
-  # project-level list is useful; it need not mirror Comparator declarations.
+    Formalized: the FC statements Erdos947.erdos_947 and
+    Erdos1190.erdos_1190.variants.lt_one, exactly as written at FC commit
+    ea8e3e198ded6fc73efb7f5653b74b28ac4ae1a8, together with the FC definitions
+    they depend on. Both are proved from one finite Mirsky–Newman lemma,
+    MirskyNewman.core. Not formalized: the other declarations in FC 1190.lean,
+    namely the definition eps, the main asymptotic statement erdos_1190, and
+    the variants tendsto_zero, lower_bound and upper_bound. In particular,
+    nothing here proves the strict bound ε_m < 1 for the supremum ε_m; lt_one
+    bounds each individual sum, which gives only ε_m ≤ 1.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
 
 automation:
   methods:
-    - method: "TEMPLATE: manual, copilot, agent, autonomous, or other"
-      models: ["TEMPLATE: model names, or replace this list with []"]
-      framework: "TEMPLATE: framework name, or n/a"
-      tool_setup: "TEMPLATE: exact detail, such as AI-assisted, editors, tactics, agents, or other tools used"
+    - method: "agent"
+      models: ["claude-opus-5-5"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code CLI (model Claude Opus 5.5, claude-opus-5-5) on a local
+        Windows machine, with the lean-lsp MCP server for diagnostics, goal
+        states and local declaration search, plus lake build and #print axioms.
+        Claude Code wrote all the Lean proofs (MirskyNewman/Core.lean,
+        Bridge.lean and Counting.lean), the Solution wiring,
+        scripts/check_fc_fidelity.py and this metadata. Comparator and the
+        metadata validator run only in GitHub Actions.
       cost:
-        wall_time: "TEMPLATE: approximate elapsed effort"
-        spend_usd: "TEMPLATE: amount, subscription-based, or not tracked"
-        hardware: "TEMPLATE: local machine, API-only, or other"
-      prompting_notes: "TEMPLATE: representative prompting notes, or n/a"
-  spend_usd: "TEMPLATE: total amount, subscription-based, or not tracked"
-  notes: "TEMPLATE: describe the overall human and automation workflow"
+        wall_time: "about two calendar days (2026-11-26 to 2026-11-27); the three proof steps each took about 3–4 minutes of agent time"
+        spend_usd: "subscription-based"
+        hardware: "local Windows PC for Lean builds; GitHub-hosted Ubuntu runners for Comparator and CI"
+      prompting_notes: >-
+        The work was split into steps A–G: scoping, skeleton, core lemma,
+        bridge to erdos_947, counting proof of lt_one, metadata, and audit.
+        Each step had a written brief and a hard stop at its boundary. The
+        human fixed the target statements, approved the statements of the core
+        lemmas before any proof was written, and forbade changes to the
+        Challenge statements.
+  spend_usd: "subscription-based"
+  notes: >-
+    The Lean proofs were written by Claude Code running Claude Opus 5.5
+    (claude-opus-5-5). The human author chose the targets (the two FC
+    statements and the pinned FC commit), approved the statements of the core
+    lemmas in MirskyNewman/Core.lean, reviewed the fidelity of Challenge.lean
+    to FC, and did all git commits and pushes. Lean's kernel checks the proofs
+    and Comparator checks them against Challenge.lean. A human has not
+    reviewed the proofs line by line.
 
 fidelity:
-  divergences: "TEMPLATE: all known divergences from the cited source, or none known"
+  divergences: >-
+    None in the statements. The compared declarations, and the definitions they
+    depend on, match FC verbatim apart from the FC-only metadata listed under
+    the FC source. One caveat on reading: the lt_one docstring mentions
+    ε_m < 1, but the Lean statement, like FC's, bounds every individual sum
+    and does not state a bound on the supremum ε_m. In the proof, the finite
+    roots-of-unity argument replaces the generating-function limit of the
+    usual Mirsky–Newman account.
 
 review:
-  status: "TEMPLATE: honest review status, for example self-assessed"
+  status: "self-assessed"
   reviewers:
-    - "TEMPLATE: reviewer name, or none"
-  notes: "TEMPLATE: describe statement audits and mathematical review performed"
+    - "Yusuf Suat Babacan"
+  notes: >-
+    Statement audit: the human author compared Challenge.lean with the FC files
+    at the pinned commit. scripts/check_fc_fidelity.py also checks the match
+    mechanically, in CI as well, and checks that MirskyNewman/Defs.lean is
+    byte-identical to the Challenge definitions. The human author approved the
+    core lemma statements before proof. Mathematical correctness rests on
+    Lean's kernel and on lake comparator, which uses the toolchain's bundled
+    independent kernels, with only propext, Classical.choice and Quot.sound
+    permitted. There has been no independent peer review.
 
 alignment:
-  namespace: "TEMPLATE: project namespace"
+  namespace: "MirskyNewman"
   statements:
-    - source: "TEMPLATE: source theorem or section"
-      lean: "TEMPLATE: fully qualified Lean declaration"
-      module: "TEMPLATE: Lean module containing the declaration"
-      status: "TEMPLATE: proved, partial, adapted, or other honest description"
-      note: "TEMPLATE: explain the correspondence and any qualifications"
+    - source: "Erdős problem 947 / Mirsky–Newman theorem ([Er50]); FC Erdos947.erdos_947"
+      lean: "Erdos947.erdos_947"
+      module: "Solution"
+      status: "proved"
+      note: >-
+        Statement verbatim from FC 947.lean. The proof is
+        MirskyNewman.erdos_947 in MirskyNewman.Bridge. It turns each ideal
+        modulus into its natural generator n_i ≥ 2, which are injective, and
+        applies MirskyNewman.core with N = ∏ n_i.
+    - source: "Erdős problem 1190, variant ε_m < 1 ([Er80]); FC Erdos1190.erdos_1190.variants.lt_one"
+      lean: "Erdos1190.erdos_1190.variants.lt_one"
+      module: "Solution"
+      status: "proved"
+      note: >-
+        Statement verbatim from FC 1190.lean. The proof is
+        MirskyNewman.erdos_1190_lt_one in MirskyNewman.Counting. The disjoint
+        classes in {0, …, N−1}, with N = ∏_{n∈S} n, have N/n elements each, so
+        Σ 1/n ≤ 1. Equality would make them cover {0, …, N−1}, which
+        MirskyNewman.core rules out. Each individual sum is bounded, not the
+        supremum ε_m.
+    - source: "finite roots-of-unity form of the Mirsky–Newman argument (shared core)"
+      lean: "MirskyNewman.core"
+      module: "MirskyNewman.Core"
+      status: "proved (auxiliary, not compared)"
+      note: >-
+        Pairwise disjoint residue classes with pairwise distinct moduli ≥ 2,
+        all dividing N > 0, cannot cover {0, …, N−1}.
 
-acknowledgements: "TEMPLATE: libraries, tools, and people to credit"
+acknowledgements: >-
+  The statements and covering-system definitions come from
+  google-deepmind/formal-conjectures (Apache-2.0). The proofs use Lean 4 and
+  Mathlib. The repository structure, CI and Comparator script come from the
+  PalomarRegistry PalomarTemplate. Problem pages and attributions are from
+  erdosproblems.com, maintained by Thomas Bloom.

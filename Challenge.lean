@@ -21,7 +21,10 @@ from google-deepmind/formal-conjectures (FC) at commit
 * `Erdos1190.erdos_1190.variants.lt_one`
   (`FormalConjectures/ErdosProblems/1190.lean`). If residue classes
   `a_n mod n`, for `n` in a finite set `S` of integers all `> m ≥ 1`, are
-  pairwise disjoint, then `∑_{n ∈ S} 1/n < 1`.
+  pairwise disjoint, then `∑_{n ∈ S} 1/n < 1`. Erdős's `ε_m` (FC's
+  `Erdos1190.eps m`, not included here) is the supremum of these sums over all
+  such families, so this bound on each single sum gives `ε_m ≤ 1`; it does not
+  by itself give the strict bound `ε_m < 1` for the supremum.
 
 ## Encoding of covering systems
 
