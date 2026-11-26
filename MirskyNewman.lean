@@ -1,5 +1,6 @@
 module
 
+public import MirskyNewman.Bridge
 public import MirskyNewman.Core
 public import MirskyNewman.Defs
 -- Supplies `∑`, `ℝ`, and `[ZMOD n]` for the `lt_one` statement until

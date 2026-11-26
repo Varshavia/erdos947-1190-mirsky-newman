@@ -10,9 +10,8 @@ constants come from `MirskyNewman.Defs`, which is byte-identical to the
 Challenge definitions. Comparator checks that each declaration here has exactly
 the type of its Challenge counterpart and uses only the permitted axioms.
 
-Skeleton stage (Step B): both proofs are still `sorry`. Step D supplies
-`erdos_947` from `MirskyNewman.Bridge`, and Step E supplies `lt_one` from
-`MirskyNewman.Counting`.
+`erdos_947` is `MirskyNewman.erdos_947` from `MirskyNewman.Bridge` (Step D).
+`lt_one` is still `sorry`; Step E supplies it from `MirskyNewman.Counting`.
 -/
 
 @[expose] public section
@@ -21,8 +20,8 @@ open Function
 
 namespace Erdos947
 
-theorem erdos_947 : ¬ ∃ c : StrictCoveringSystem ℤ, Pairwise (Disjoint on c.coset) := by
-  sorry
+theorem erdos_947 : ¬ ∃ c : StrictCoveringSystem ℤ, Pairwise (Disjoint on c.coset) :=
+  MirskyNewman.erdos_947
 
 end Erdos947
 
