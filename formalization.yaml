@@ -1,5 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
 # formalization.yaml v0.4. Replace every TEMPLATE value before submitting.
+# TODO(Step F): every remaining TEMPLATE value is deliberately left for Step F;
+# scripts/validate-formalization.rb (and the CI licence job) report each one.
 # Replace a placeholder list with [] only when its adjacent comment permits it;
 # lists described as required must remain nonempty.
 version: "v0.4"
@@ -11,14 +13,14 @@ project:
     results of the formalization
   # Required nonempty list of name strings or mappings with a nonempty name.
   authors:
-    - "TEMPLATE: formalizer name"
+    - "Yusuf Suat Babacan"  # GitHub: Varshavia
   # Required root licence. Keep this in sync with the Apache-2.0 LICENSE file.
   license: "Apache-2.0"
   # Required nonempty list of name strings or mappings with a nonempty name.
   # For a thin wrapper, name people responsible for this submitted wrapper;
   # submission authorization separately covers the underlying formalization.
   responsible_maintainers:
-    - "TEMPLATE: person responsible for this formalization"
+    - "Yusuf Suat Babacan"  # GitHub: Varshavia
 
 # Omit repository for an ordinary project: Palomar treats this submitted
 # repository as the substantive proof development. If this repository is only

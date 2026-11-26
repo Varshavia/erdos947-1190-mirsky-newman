@@ -1,7 +1,10 @@
 {
   "challenge_module": "Challenge",
   "solution_module": "Solution",
-  "theorem_names": ["PalomarTemplate.main_result"],
+  "theorem_names": [
+    "Erdos947.erdos_947",
+    "Erdos1190.erdos_1190.variants.lt_one"
+  ],
   "definition_names": [],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
   "enable_nanoda": true

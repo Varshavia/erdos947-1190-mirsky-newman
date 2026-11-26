@@ -42,6 +42,24 @@ jobs:
             abort "LICENSE is not detected exactly as Apache-2.0" unless identifiers == ["Apache-2.0"]
           ' "$RUNNER_TEMP/license.json"
 
+  fc-fidelity:
+    name: Check Challenge against formal-conjectures text
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Check out formal-conjectures at the pinned commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: google-deepmind/formal-conjectures
+          ref: ea8e3e198ded6fc73efb7f5653b74b28ac4ae1a8
+          path: formal-conjectures
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Diff Challenge declarations against the FC source
+        run: python3 scripts/check_fc_fidelity.py --fc-repo formal-conjectures
+
   submission-link:
     name: Check where the README sends a submitter
     runs-on: ubuntu-latest
@@ -107,7 +125,7 @@ jobs:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
           DISABLE_EQUATIONS: "1"
           DOCGEN_SRC: github
-        run: lake build PalomarTemplate:docs
+        run: lake build MirskyNewman:docs
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: api-documentation
