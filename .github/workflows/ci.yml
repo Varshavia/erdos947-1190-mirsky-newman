@@ -108,6 +108,14 @@ jobs:
 
   docs:
     name: Build API documentation
+    # Manual runs only. doc-gen4 over the Mathlib import closure runs out of
+    # memory (error code 12) on the standard GitHub-hosted runner. Palomar
+    # neither requires nor builds API documentation: the verifier compiles the
+    # Challenge, enforces the source rules and runs Comparator with the kernel
+    # and nanoda, and the registry renders the pinned Challenge itself. The
+    # template only recommends docbuild/. The job stays here so it can still be
+    # started from the Actions tab ("Run workflow").
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:

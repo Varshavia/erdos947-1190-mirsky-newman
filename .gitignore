@@ -2,3 +2,6 @@
 /.lake/
 /docbuild/.lake/
 
+
+.mcp.json
+.claude/settings.local.json

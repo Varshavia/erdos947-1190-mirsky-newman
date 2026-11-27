@@ -107,7 +107,10 @@ ruby scripts/validate-formalization.rb
 ```
 
 `verify-comparator.sh` needs Linux with `bwrap` (bubblewrap). The Ruby
-validator needs Ruby. GitHub Actions runs all of these checks on every push.
+validator needs Ruby. GitHub Actions runs all of these checks on every push,
+except the doc build. That one runs out of memory on the standard runner, so it
+runs only when started by hand (`workflow_dispatch`). Palomar does not require
+API documentation.
 
 ## Provenance and licence
 
