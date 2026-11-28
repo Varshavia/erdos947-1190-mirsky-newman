@@ -6,10 +6,14 @@ This repository is a Lean 4 and Mathlib proof of two statements from
 [google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures)
 (FC). Both are stated word for word as in FC at commit
 [`ea8e3e198ded6fc73efb7f5653b74b28ac4ae1a8`](https://github.com/google-deepmind/formal-conjectures/tree/ea8e3e198ded6fc73efb7f5653b74b28ac4ae1a8).
-It is prepared as a [Palomar](https://palomar-registry.org/) submission.
+It is registered in the [Palomar](https://palomar-registry.org/) registry.
 
-**Palomar entry:** _not yet registered. The link will go here once the
-entry exists._
+**Palomar entry:**
+[PALOMAR-2026-11-27-000024](https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-27-000024&version=1),
+version 1. The registered version is pinned at commit
+[`c1d57d0b`](https://github.com/Varshavia/erdos947-1190-mirsky-newman/tree/c1d57d0bcfe16110ad13d0c793be5c8214de8ff9)
+(`c1d57d0bcfe16110ad13d0c793be5c8214de8ff9`). Later commits on `main`, such as
+the one that added this paragraph, are not part of the registered record.
 
 ## What is proved
 
@@ -138,7 +142,7 @@ API documentation.
 - This repository is released under the Apache License 2.0 (`LICENSE`). Cited
   papers and dependencies keep their own licences.
 
-Palomar submissions go through the
+Palomar submissions and revisions go through the
 [submission form](https://submit.palomar-registry.org/), which takes the full
 40-character commit SHA. See the
 [Palomar submission policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/main/CONTRIBUTING.md).
